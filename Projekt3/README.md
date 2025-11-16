@@ -1,4 +1,3 @@
-✅ FINAL README.md (krátká verze podle zadání)
 # Elections Scraper
 
 This project downloads the results of the 2017 Czech parliamentary elections for a selected district from the website **volby.cz** and saves them into a CSV file. The script processes all municipalities in the selected district and extracts voter statistics and vote counts for all political parties.
@@ -35,7 +34,7 @@ pip install -r requirements.txt
 
 The script requires **two arguments**:
 
-1. URL of the district page (must contain `ps32`)
+1. URL of the district page
 2. Name of the output CSV file
 
 Syntax:
@@ -67,7 +66,7 @@ During execution, the script prints progress for each processed municipality:
 
 
 
-Stahuji data z URL: https://www.volby.cz/
+Downloading data from:: https://www.volby.cz/...
 ...
 (1/61) Processing municipality: Branky (541648)
 (2/61) Processing municipality: Bystřička (544592)
@@ -109,6 +108,3 @@ The file includes:
 - The script fulfills the project requirements: scraping, argument validation, CSV output.
 - It is separated into clear functions and under the 200-line limit.
 - CSV is encoded in `utf-8-sig` for proper display of Czech characters in Excel.
-
-
-Pokud chceš, můžu ti udělat ještě kratší verzi, nebo delší detailní verzi, nebo česky. Stačí říct.
