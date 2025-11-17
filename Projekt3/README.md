@@ -15,19 +15,10 @@ It is recommended to use a virtual environment.
 python -m venv venv
 .\venv\Scripts\activate
 
-
-**Linux/macOS**:
-
-
-python3 -m venv venv
-source venv/bin/activate
-
-
 ### 2. Install required libraries
 
 
 pip install -r requirements.txt
-
 
 
 ## Running the Project
@@ -40,7 +31,7 @@ The script requires **two arguments**:
 Syntax:
 
 
-python main.py <DISTRICT_URL_PS32> <OUTPUT_CSV>
+python main.py <DISTRICT_URL> <OUTPUT_CSV>
 
 
 
@@ -101,10 +92,4 @@ The file includes:
 - envelopes issued
 - valid votes
 - vote counts for each political party
-
-
-## Summary
-
-- The script fulfills the project requirements: scraping, argument validation, CSV output.
-- It is separated into clear functions and under the 200-line limit.
 - CSV is encoded in `utf-8-sig` for proper display of Czech characters in Excel.

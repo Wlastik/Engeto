@@ -1,17 +1,16 @@
-
 import random
 import time
 from typing import List, Tuple
 
-DIGITS: int = 4  # délka tajného čísla; **ne** hardcodovat jinde
+DIGITS: int = 4  # length of the secret number; **do not** hardcode anywhere else
 
 
 def pluralize(n: int, singular: str, plural: str) -> str:
-    #mnozne cislo vystupu
+    # pluralization helper for output
     return f"{n} {singular if n == 1 else plural}"
 
 
-def generate_secret(length: int) -> str:    #generovani cisla, prvni nesmi byt 0
+def generate_secret(length: int) -> str:    # generates the number, first digit cannot be 0
     digits = list("0123456789")
     first = random.choice(digits[1:])
     digits.remove(first)
@@ -19,7 +18,7 @@ def generate_secret(length: int) -> str:    #generovani cisla, prvni nesmi byt 0
     return first + "".join(secret_rest)
 
 
-def validate_guess(guess: str, length: int) -> List[str]: #kontrola vstupu
+def validate_guess(guess: str, length: int) -> List[str]:  # input validation
     errors: List[str] = []
 
     if len(guess) != length:
@@ -32,12 +31,12 @@ def validate_guess(guess: str, length: int) -> List[str]: #kontrola vstupu
         errors.append("Your tip cannot start with 0")
 
     if len(set(guess)) != len(guess):
-        errors.append("Your tip cannot have duplicit numbers.")
+        errors.append("Your tip cannot have duplicate numbers.")
 
     return errors
 
 
-def count_bulls_cows(secret: str, guess: str) -> Tuple[int, int]: # pocita spravne cislice na spravne a spatne pozici
+def count_bulls_cows(secret: str, guess: str) -> Tuple[int, int]:  # counts correct digits in correct & wrong positions
     bulls = sum(s == g for s, g in zip(secret, guess))
     common = sum(min(secret.count(d), guess.count(d)) for d in set(guess))
     cows = common - bulls
@@ -84,12 +83,12 @@ def play_one_round() -> int:
         print(f"{pluralize(bulls, 'bull', 'bulls')}, {pluralize(cows, 'cow', 'cows')}")
 
 
-def ask_yes_no(prompt: str) -> bool: #otazka  ano/ne pro opakovani hry
+def ask_yes_no(prompt: str) -> bool:  # yes/no question for repeating the game
     ans = input(f"{prompt} [y/n]: ").strip().lower()
     return ans in {"y", "yes", "a", "ano"}
 
 
-def print_stats(games: List[int]) -> None: #statistiky
+def print_stats(games: List[int]) -> None:  # game statistics
     if not games:
         return
     total = len(games)
@@ -104,7 +103,7 @@ def print_stats(games: List[int]) -> None: #statistiky
     print("==================\n")
 
 
-def main() -> None: #spousteni programu a pripadne opakovani a statistiky. 
+def main() -> None:  # runs the program, repeats rounds, shows statistics
     print_intro()
     results: List[int] = []
 
@@ -116,5 +115,5 @@ def main() -> None: #spousteni programu a pripadne opakovani a statistiky.
             break
 
 
-if __name__ == "__main__":    # Hra se nespusti pri importu modulu
+if __name__ == "__main__":    # prevents auto-start when imported as a module
     main()
